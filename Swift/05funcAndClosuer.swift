@@ -39,3 +39,58 @@ print("합: \(result.sum), 곱: \(result.product)")
 //      실행 코드
 //  }
 
+let numbers = [1, 2, 3, 4, 5]
+
+// === === === 여기서 === === ===
+let doubleNumbers1 = numbers.map { (number:Int) -> Int in
+    return number * 2
+}
+print(doubleNumbers1)
+
+let doubleNumbers2 = numbers.map { number in
+    number * 3
+}
+print(doubleNumbers2)
+
+let doubleNumbers3 = numbers.map { $0 * 4 }
+print(doubleNumbers3)
+// === === === 여기까지 다 같은 코드임 === === ===
+
+func makeCounter() -> () -> Int {
+    var count = 0
+
+    return { () -> Int in
+        count += 1
+        return count
+    }
+}
+let testCount = makeCounter()
+
+for _ in 1...5 {
+    print(testCount())
+}
+
+// 좀 더 이해가 필요함 
+
+
+// guard 기본구조
+//  guard 조건 else {
+//  조건이 거짓일 때 실행되는 코드
+//  함수나 반복문을 종료하는 명령문 (return, break, continue, throw 등)
+//  }
+
+func greet(person: [String: String]) {
+    guard let name = person["name"] else {
+        print("Name not found")
+        return
+    }
+    print("Hello, \(name)!")
+}
+
+let person1 = ["name": "Alice"]
+let person2 = ["age": "30"]
+
+greet(person: person1)
+greet(person: person2)
+
+// 진짜 가드임;;
