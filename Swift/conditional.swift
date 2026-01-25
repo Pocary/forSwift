@@ -50,6 +50,18 @@ func switc() {
     //      분기예측을 너무 신경쓰지 말 것
     //      의도를 명확히 한 후 병목이 생긴 부분을 바꾸면 됨 
 
+    // where : case 뒤에 붙은 if 
+    let yetAnotherPoint = (1, -1)
+
+    switch yetAnotherPoint {
+    case let (x, y) where x == y:
+        print("(\(x), \(y)) is on the line x == y")
+    case let (x, y) where x == -y:
+        print("(\(x), \(y)) is on the line x == -y")
+    case let (x, y):
+        print("(\(x), \(y)) is just some arbitrary point")
+    }
+
 }
 
 // ternaryOperaterAndIf()
