@@ -73,7 +73,7 @@ for _ in 1...5 {
 // 좀 더 이해가 필요함 
 
 
-// guard 기본구조
+//  guard 기본구조
 //  guard 조건 else {
 //  조건이 거짓일 때 실행되는 코드
 //  함수나 반복문을 종료하는 명령문 (return, break, continue, throw 등)
