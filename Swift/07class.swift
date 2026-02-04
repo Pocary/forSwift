@@ -91,3 +91,66 @@ let bus = Bus()
 bus.currentSpeed = 40.0
 bus.passengerCount = 15
 print(bus.description())
+
+
+
+// 참조 
+class Pet {
+    var name: String
+
+    init(name: String) {
+        self.name = name
+    }
+}
+
+let p1 = Pet(name: "Albatross")
+let p2 = p1
+
+print(p1.name)
+print(p2.name)
+
+p2.name = "Bomm" 
+
+print(p1.name)
+print(p2.name)
+// 주소 참조라서 둘 다 같이 바뀜 
+// 클래스 인스턴스가 동일한 인스턴스를 참조하는지 확인할 수 있음
+// === 이딴 싸가지없는 문법을 통해.
+
+let p3 = Pet(name: "CherryBlossom")
+let p4 = p3
+let p5 = Pet(name: "CherryBlossom")
+
+if p3 === p4 {  // 그냥 참조가 같음 
+    print("p3, p4 refer to the same instance")      // O 
+} else {
+    print("p3, p4 refer to different instance")     // X
+}
+
+if p3 === p5 {  // 값이 같아도 참조가 다름 
+    print("p3, p5 refer to the same instance")      // X
+} else {
+    print("p3, p5 refer to different instance")     // O
+}
+
+
+
+// Strong Reference Cycle 
+class myPet: Pet {
+    weak var friend: myPet?
+
+}
+
+let alice = myPet(name: "Alice")
+let bob = myPet(name: "Bob")
+
+alice.friend = bob
+bob.friend = alice
+// 서로 참조하고있음  강한 참조 사이클 형성 
+// 나약의 포션 던져주면 됨 
+// weak 맞은 녀석은 참조하고있던 인스턴스가 해제되면 nil로 변함
+// 
+// unowned라는것도 있는데 잘 안씀
+// Objective-C의 유산
+// 이건 참조하고 있는 인스턴스가 절대 해제될 일이 없다는걸 명시하는건데 
+// 만약 해제되면 런타임 에러 남 
